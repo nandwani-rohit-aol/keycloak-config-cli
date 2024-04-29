@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   keycloak:
     image: quay.io/keycloak/keycloak:${KEYCLOAK_VERSION}
@@ -11,8 +11,12 @@ services:
       - "8080:8080"
       - "8787:8787"
     command:
+      # - export
+      # - --file
+      # - /2.json
+      # - --optimized
       - start-dev
-      - --features admin-fine-grained-authz
+
   keycloak-legacy:
     image: quay.io/keycloak/keycloak:${KEYCLOAK_VERSION}-legacy
     environment:
