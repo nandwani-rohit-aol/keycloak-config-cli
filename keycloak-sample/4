@@ -1,0 +1,117 @@
+[
+  {
+    "SNPT": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]",
+    "SN": "[\"Only Super Admin Policy\", \"Only National Admin Policy\"]"
+  },
+  {
+    "name": "course:create"
+  },
+  {
+    "name": "course:create-old"
+  },
+  {
+    "name": "course:search"
+  },
+  {
+    "name": "course:view"
+  },
+  {
+    "name": "course:edit"
+  },
+  {
+    "name": "course:copy"
+  },
+  {
+    "name": "course:cancel"
+  },
+  {
+    "name": "course:cancel-undo"
+  },
+  {
+    "name": "course:share"
+  },
+  {
+    "name": "course:register-credit"
+  },
+  {
+    "name": "course:register-paylink"
+  },
+  {
+    "name": "course:register-offline"
+  },
+  {
+    "name": "course:view-participant-list"
+  },
+  {
+    "name": "course:upload-expense"
+  },
+  {
+    "name": "course:view-participant-details"
+  },
+  {
+    "name": "course:view-payment"
+  },
+  {
+    "name": "course:edit-payment"
+  },
+  {
+    "name": "course:edit-registration"
+  },
+  {
+    "name": "course:print-registration"
+  },
+  {
+    "name": "course:track-attendance"
+  },
+  {
+    "name": "course:find-transfer"
+  },
+  {
+    "name": "course:request-transfer"
+  },
+  {
+    "name": "course:approve-transfer"
+  },
+  {
+    "name": "course:transfer-participant"
+  },
+  {
+    "name": "course:request-refund"
+  },
+  {
+    "name": "course:approve-refund"
+  },
+  {
+    "name": "course:issue-refund"
+  },
+  {
+    "name": "course:export-csv"
+  },
+  {
+    "name": "course:export-excel"
+  },
+  {
+    "name": "course:manage-reminder-mail"
+  },
+  {
+    "name": "course:search-transaction"
+  },
+  {
+    "name": "course:create-discount"
+  },
+  {
+    "name": "course:view-discount"
+  },
+  {
+    "name": "course:submit-caf"
+  },
+  {
+    "name": "course:view-caf"
+  },
+  {
+    "name": "course:print-caf"
+  },
+  {
+    "name": "course:approve-caf"
+  }
+]

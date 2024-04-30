@@ -537,7 +537,7 @@
           "clientRole": true
         },
         {
-          "name": "finance_admin",
+          "name": "program_organizer",
           "composite": false,
           "clientRole": true
         },
@@ -593,7 +593,7 @@
       "lastName": "ln3",
       "clientRoles": {
         "bx-fe": [
-          "finance_admin"
+          "program_organizer"
         ]
       }
     },
@@ -654,16 +654,115 @@
             "name": "course",
             "scopes": [
               {
-                "name": "course:view"
+                "name": "course:create"
               },
               {
-                "name": "course:create"
+                "name": "course:create-old"
+              },
+              {
+                "name": "course:search"
+              },
+              {
+                "name": "course:view"
               },
               {
                 "name": "course:edit"
               },
               {
-                "name": "course:delete"
+                "name": "course:copy"
+              },
+              {
+                "name": "course:cancel"
+              },
+              {
+                "name": "course:cancel-undo"
+              },
+              {
+                "name": "course:share"
+              },
+              {
+                "name": "course:register-credit"
+              },
+              {
+                "name": "course:register-paylink"
+              },
+              {
+                "name": "course:register-offline"
+              },
+              {
+                "name": "course:view-participant-list"
+              },
+              {
+                "name": "course:upload-expense"
+              },
+              {
+                "name": "course:view-participant-details"
+              },
+              {
+                "name": "course:view-payment"
+              },
+              {
+                "name": "course:edit-payment"
+              },
+              {
+                "name": "course:edit-registration"
+              },
+              {
+                "name": "course:print-registration"
+              },
+              {
+                "name": "course:track-attendance"
+              },
+              {
+                "name": "course:find-transfer"
+              },
+              {
+                "name": "course:request-transfer"
+              },
+              {
+                "name": "course:approve-transfer"
+              },
+              {
+                "name": "course:transfer-participant"
+              },
+              {
+                "name": "course:request-refund"
+              },
+              {
+                "name": "course:approve-refund"
+              },
+              {
+                "name": "course:issue-refund"
+              },
+              {
+                "name": "course:export-csv"
+              },
+              {
+                "name": "course:export-excel"
+              },
+              {
+                "name": "course:manage-reminder-mail"
+              },
+              {
+                "name": "course:search-transaction"
+              },
+              {
+                "name": "course:create-discount"
+              },
+              {
+                "name": "course:view-discount"
+              },
+              {
+                "name": "course:submit-caf"
+              },
+              {
+                "name": "course:view-caf"
+              },
+              {
+                "name": "course:print-caf"
+              },
+              {
+                "name": "course:approve-caf"
               }
             ]
           }
@@ -688,12 +787,12 @@
             }
           },
           {
-            "name": "Only Finance Admin Policy",
+            "name": "Only Program Organizer Policy",
             "type": "role",
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "roles": "[{\"id\":\"bx-fe/finance_admin\"}]"
+              "roles": "[{\"id\":\"bx-fe/program_organizer\"}]"
             }
           },
           {
@@ -706,17 +805,6 @@
             }
           },
           {
-            "name": "View Course Permission",
-            "type": "scope",
-            "logic": "POSITIVE",
-            "decisionStrategy": "AFFIRMATIVE",
-            "config": {
-              "resources": "[\"course\"]",
-              "scopes": "[\"course:view\"]",
-              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Finance Admin Policy\", \"Only Teacher Policy\"]"
-            }
-          },
-          {
             "name": "Create Course Permission",
             "type": "scope",
             "logic": "POSITIVE",
@@ -724,7 +812,40 @@
             "config": {
               "resources": "[\"course\"]",
               "scopes": "[\"course:create\"]",
-              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Teacher Policy\"]"
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Create Old Course Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:create-old\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\"]"
+            }
+          },
+          {
+            "name": "Search Course Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:search\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "View Course Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:view\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
             }
           },
           {
@@ -735,33 +856,473 @@
             "config": {
               "resources": "[\"course\"]",
               "scopes": "[\"course:edit\"]",
-              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Teacher Policy\"]"
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
             }
           },
           {
-            "name": "Delete Course Permission",
+            "name": "Copy Course Permission",
             "type": "scope",
             "logic": "POSITIVE",
             "decisionStrategy": "AFFIRMATIVE",
             "config": {
               "resources": "[\"course\"]",
-              "scopes": "[\"course:delete\"]",
+              "scopes": "[\"course:copy\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Cancel Course Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:cancel\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Undo Cancel Course Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:cancel-undo\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Share Course Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:share\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Assisted Register Course with Credit Card Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:register-credit\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Assisted Register Course with Payment Link Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:register-paylink\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Assisted Register Course with Offline Cash/Check Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:register-offline\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "View Course Participant List Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:view-participant-list\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Upload Course Expense Receipt Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:upload-expense\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "View Course Participant Registration Details Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:view-participant-details\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "View Course Payment Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:view-payment\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Edit Course Payment Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:edit-payment\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Edit Course Registration Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:edit-registration\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Print Course Registration Form Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:print-registration\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Track Course Attendance Status Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:track-attendance\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Find Course Transfer Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:find-transfer\"]",
               "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\"]"
+            }
+          },
+          {
+            "name": "Request Course Transfer Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:request-transfer\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Approve/Reject Course Transfer Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:approve-transfer\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\"]"
+            }
+          },
+          {
+            "name": "Transfer Course Participant Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:transfer-participant\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\"]"
+            }
+          },
+          {
+            "name": "Request Course Refund Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:request-refund\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Approve/Reject Course Refund Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:approve-refund\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\"]"
+            }
+          },
+          {
+            "name": "Issue Course Refund Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:issue-refund\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\"]"
+            }
+          },
+          {
+            "name": "Export Course Participant List to CSV Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:export-csv\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Export Course Participant List to Excel Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:export-excel\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Manage Course Reminder Email Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:manage-reminder-mail\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Search Course Transaction Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:search-transaction\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\"]"
+            }
+          },
+          {
+            "name": "Create Course Discount Code Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:create-discount\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "View Course Discount Code Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:view-discount\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Submit Course Accounting Form Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:submit-caf\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "View Course Accounting Form Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:view-caf\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Print Course Accounting Form Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:print-caf\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
+            }
+          },
+          {
+            "name": "Approve/Reject Course Accounting Form Permission",
+            "type": "scope",
+            "logic": "POSITIVE",
+            "decisionStrategy": "AFFIRMATIVE",
+            "config": {
+              "resources": "[\"course\"]",
+              "scopes": "[\"course:approve-caf\"]",
+              "applyPolicies": "[\"Only Super Admin Policy\", \"Only National Admin Policy\", \"Only Program Organizer Policy\", \"Only Teacher Policy\"]"
             }
           }
         ],
         "scopes": [
           {
-            "name": "course:view"
+            "name": "course:create"
           },
           {
-            "name": "course:create"
+            "name": "course:create-old"
+          },
+          {
+            "name": "course:search"
+          },
+          {
+            "name": "course:view"
           },
           {
             "name": "course:edit"
           },
           {
-            "name": "course:delete"
+            "name": "course:copy"
+          },
+          {
+            "name": "course:cancel"
+          },
+          {
+            "name": "course:cancel-undo"
+          },
+          {
+            "name": "course:share"
+          },
+          {
+            "name": "course:register-credit"
+          },
+          {
+            "name": "course:register-paylink"
+          },
+          {
+            "name": "course:register-offline"
+          },
+          {
+            "name": "course:view-participant-list"
+          },
+          {
+            "name": "course:upload-expense"
+          },
+          {
+            "name": "course:view-participant-details"
+          },
+          {
+            "name": "course:view-payment"
+          },
+          {
+            "name": "course:edit-payment"
+          },
+          {
+            "name": "course:edit-registration"
+          },
+          {
+            "name": "course:print-registration"
+          },
+          {
+            "name": "course:track-attendance"
+          },
+          {
+            "name": "course:find-transfer"
+          },
+          {
+            "name": "course:request-transfer"
+          },
+          {
+            "name": "course:approve-transfer"
+          },
+          {
+            "name": "course:transfer-participant"
+          },
+          {
+            "name": "course:request-refund"
+          },
+          {
+            "name": "course:approve-refund"
+          },
+          {
+            "name": "course:issue-refund"
+          },
+          {
+            "name": "course:export-csv"
+          },
+          {
+            "name": "course:export-excel"
+          },
+          {
+            "name": "course:manage-reminder-mail"
+          },
+          {
+            "name": "course:search-transaction"
+          },
+          {
+            "name": "course:create-discount"
+          },
+          {
+            "name": "course:view-discount"
+          },
+          {
+            "name": "course:submit-caf"
+          },
+          {
+            "name": "course:view-caf"
+          },
+          {
+            "name": "course:print-caf"
+          },
+          {
+            "name": "course:approve-caf"
           }
         ]
       }
