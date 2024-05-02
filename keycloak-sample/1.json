@@ -2,9 +2,9 @@
   "id": "mvp",
   "realm": "mvp",
   "displayName": "mvp-demo",
+  "enabled": true,
   "authenticationFlows": [
     {
-      "id": "2b8b73c2-e892-4f09-84c3-4a352c4a23eb",
       "alias": "Account verification options",
       "description": "Method with which to verity the existing account",
       "providerId": "basic-flow",
@@ -30,7 +30,6 @@
       ]
     },
     {
-      "id": "d59d2ab0-c3f1-4514-b085-6e7beef7c0a3",
       "alias": "Browser - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -56,7 +55,6 @@
       ]
     },
     {
-      "id": "dd43a85f-062b-4c91-858c-09fa354729d6",
       "alias": "Direct Grant - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -82,7 +80,6 @@
       ]
     },
     {
-      "id": "9f6a71f1-2a71-4bdf-898b-7c183ee8810d",
       "alias": "First broker login - Conditional OTP",
       "description": "Flow to determine if the OTP is required for the authentication",
       "providerId": "basic-flow",
@@ -108,7 +105,6 @@
       ]
     },
     {
-      "id": "d3a928a4-5035-45de-95da-3172a83f1ad4",
       "alias": "Handle Existing Account",
       "description": "Handle what to do if there is existing account with same email/username like authenticated identity provider",
       "providerId": "basic-flow",
@@ -134,7 +130,6 @@
       ]
     },
     {
-      "id": "1fcdcfd2-3f7b-4483-b990-e37029bfaa81",
       "alias": "Reset - Conditional OTP",
       "description": "Flow to determine if the OTP should be reset or not. Set to REQUIRED to force.",
       "providerId": "basic-flow",
@@ -160,7 +155,6 @@
       ]
     },
     {
-      "id": "67b80061-8d04-49ae-aa1c-233d8f883ac8",
       "alias": "User creation or linking",
       "description": "Flow for the existing/non-existing user alternatives",
       "providerId": "basic-flow",
@@ -187,7 +181,6 @@
       ]
     },
     {
-      "id": "738ccea7-ba08-4ecd-b74a-44e3a33ef4ed",
       "alias": "Verify Existing Account by Re-authentication",
       "description": "Reauthentication of existing account",
       "providerId": "basic-flow",
@@ -213,7 +206,6 @@
       ]
     },
     {
-      "id": "f57208f2-3cd4-4593-95ff-539aa238fa16",
       "alias": "browser",
       "description": "browser based authentication",
       "providerId": "basic-flow",
@@ -255,7 +247,6 @@
       ]
     },
     {
-      "id": "a1b7fa51-ec3c-4a23-a2ec-b89e2f945d85",
       "alias": "clients",
       "description": "Base authentication for clients",
       "providerId": "client-flow",
@@ -297,7 +288,6 @@
       ]
     },
     {
-      "id": "6af3058a-90b9-45cc-bf8e-3f91714ab09c",
       "alias": "direct grant",
       "description": "OpenID Connect Resource Owner Grant",
       "providerId": "basic-flow",
@@ -331,7 +321,6 @@
       ]
     },
     {
-      "id": "e8c176d8-a32a-4882-b99c-fc12565745c9",
       "alias": "docker auth",
       "description": "Used by Docker clients to authenticate against the IDP",
       "providerId": "basic-flow",
@@ -349,7 +338,6 @@
       ]
     },
     {
-      "id": "feb6c6e5-38a2-4cdb-9cae-576d0ceda497",
       "alias": "first broker login",
       "description": "Actions taken after first broker login with identity provider account, which is not yet linked to any Keycloak account",
       "providerId": "basic-flow",
@@ -376,7 +364,6 @@
       ]
     },
     {
-      "id": "03f41071-310e-42c7-88bf-f2e016ab859d",
       "alias": "forms",
       "description": "Username, password, otp and other auth forms.",
       "providerId": "basic-flow",
@@ -402,7 +389,6 @@
       ]
     },
     {
-      "id": "41e92307-8178-442c-9e28-296ed1d21f1f",
       "alias": "registration",
       "description": "registration flow",
       "providerId": "basic-flow",
@@ -421,7 +407,6 @@
       ]
     },
     {
-      "id": "b3d2c54d-fb3a-4cc3-946f-83e7241b282d",
       "alias": "registration form",
       "description": "registration form",
       "providerId": "form-flow",
@@ -463,7 +448,6 @@
       ]
     },
     {
-      "id": "e174c86f-d37d-4ca1-bb05-c71d0b71f2a7",
       "alias": "reset credentials",
       "description": "Reset credentials for a user if they forgot their password or something",
       "providerId": "basic-flow",
@@ -505,7 +489,6 @@
       ]
     },
     {
-      "id": "2dfd1c08-687e-42b1-9141-9bded12e78bc",
       "alias": "saml ecp",
       "description": "SAML ECP Profile Authentication Flow",
       "providerId": "basic-flow",
@@ -524,30 +507,28 @@
     }
   ],
   "roles": {
-    "client": {
-      "bx-fe": [
-        {
-          "name": "super_admin",
-          "composite": false,
-          "clientRole": true
-        },
-        {
-          "name": "national_admin",
-          "composite": false,
-          "clientRole": true
-        },
-        {
-          "name": "program_organizer",
-          "composite": false,
-          "clientRole": true
-        },
-        {
-          "name": "teacher",
-          "composite": false,
-          "clientRole": true
-        }
-      ]
-    }
+    "realm": [
+      {
+        "name": "mvp_super_admin",
+        "composite": false,
+        "clientRole": true
+      },
+      {
+        "name": "mvp_national_admin",
+        "composite": false,
+        "clientRole": true
+      },
+      {
+        "name": "mvp_program_organizer",
+        "composite": false,
+        "clientRole": true
+      },
+      {
+        "name": "mvp_teacher",
+        "composite": false,
+        "clientRole": true
+      }
+    ]
   },
   "users": [
     {
@@ -562,11 +543,19 @@
           "type3"
         ]
       },
-      "clientRoles": {
-        "bx-fe": [
-          "super_admin"
-        ]
-      }
+      "realmRoles": [
+        "mvp_super_admin"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "secretData": "{\"value\":\"bfKrt3LOwTg+ld08rv41XxNUiV/9NpR88yHqQQQfbQhXII90v9M+uDmMY8ugl+lYui7Vxtjbk7vhRxoGjldMpg==\",\"salt\":\"QOlIfl2l3Kha+HKbbuB82g==\",\"additionalParameters\":{}}",
+          "credentialData": "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+        }
+      ],
+      "requiredActions": [
+        "UPDATE_PASSWORD"
+      ]
     },
     {
       "username": "person2",
@@ -579,11 +568,19 @@
           "type2"
         ]
       },
-      "clientRoles": {
-        "bx-fe": [
-          "national_admin"
-        ]
-      }
+      "realmRoles": [
+        "mvp_national_admin"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "secretData": "{\"value\":\"Z41ygujzj7GZrNNHKDgavQV3O3fSEvMEkC4RG9eoVLTlWJkyWh574G3rO6hhdJ706TcHdHCzPVqNrDlu4R4vpA==\",\"salt\":\"sFC7vd2P/Gkyb9Z057lIrQ==\",\"additionalParameters\":{}}",
+          "credentialData": "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+        }
+      ],
+      "requiredActions": [
+        "UPDATE_PASSWORD"
+      ]
     },
     {
       "username": "person3",
@@ -591,11 +588,19 @@
       "enabled": true,
       "firstName": "fn3",
       "lastName": "ln3",
-      "clientRoles": {
-        "bx-fe": [
-          "program_organizer"
-        ]
-      }
+      "realmRoles": [
+        "mvp_program_organizer"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "secretData": "{\"value\":\"95E/7s86u/x2PciN/fzAwvtSUc6Yupj6a06bNox41tG64k/RmX7K1aV0+184hEGhouKqtF5FYlJLsfYYHOyWIw==\",\"salt\":\"zo8PtMEKpc5kBhomWrEMKA==\",\"additionalParameters\":{}}",
+          "credentialData": "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+        }
+      ],
+      "requiredActions": [
+        "UPDATE_PASSWORD"
+      ]
     },
     {
       "username": "person4",
@@ -608,17 +613,25 @@
           "type4"
         ]
       },
-      "clientRoles": {
-        "bx-fe": [
-          "teacher"
-        ]
-      }
+      "realmRoles": [
+        "mvp_teacher"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "secretData": "{\"value\":\"D8QqH5QoWIyLEnmzuBfXI0enX/JZVfq/0gHwBdEc8SjFFPhP9mhfSludoAbyagv4DUSTD1v5XrWrYAY5Pa0LBw==\",\"salt\":\"3SWbchcOLZLcyqFpe3EGrA==\",\"additionalParameters\":{}}",
+          "credentialData": "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+        }
+      ],
+      "requiredActions": [
+        "UPDATE_PASSWORD"
+      ]
     }
   ],
   "clients": [
     {
-      "clientId": "bx-fe",
-      "name": "bx-fe",
+      "clientId": "bx-be",
+      "name": "bx-be",
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
       "secret": "secretkey123",
@@ -774,7 +787,7 @@
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "roles": "[{\"id\":\"bx-fe/super_admin\"}]"
+              "roles": "[{\"id\":\"mvp_super_admin\"}]"
             }
           },
           {
@@ -783,7 +796,7 @@
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "roles": "[{\"id\":\"bx-fe/national_admin\"}]"
+              "roles": "[{\"id\":\"mvp_national_admin\"}]"
             }
           },
           {
@@ -792,7 +805,7 @@
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "roles": "[{\"id\":\"bx-fe/program_organizer\"}]"
+              "roles": "[{\"id\":\"mvp_program_organizer\"}]"
             }
           },
           {
@@ -801,7 +814,7 @@
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "roles": "[{\"id\":\"bx-fe/teacher\"}]"
+              "roles": "[{\"id\":\"mvp_teacher\"}]"
             }
           },
           {
@@ -1325,6 +1338,67 @@
             "name": "course:approve-caf"
           }
         ]
+      }
+    },
+    {
+      "clientId": "bx-fe",
+      "name": "bx-fe",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "publicClient": true,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "protocolMappers": [
+        {
+          "name": "canteach",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "aggregate.attrs": "true",
+            "introspection.token.claim": "true",
+            "multivalued": "true",
+            "userinfo.token.claim": "true",
+            "user.attribute": "canteach",
+            "id.token.claim": "true",
+            "lightweight.claim": "false",
+            "access.token.claim": "true",
+            "claim.name": "canteach",
+            "jsonType.label": "String"
+          }
+        },
+        {
+          "name": "role",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-realm-role-mapper",
+          "consentRequired": false,
+          "config": {
+            "introspection.token.claim": "true",
+            "multivalued": "true",
+            "userinfo.token.claim": "true",
+            "id.token.claim": "true",
+            "lightweight.claim": "false",
+            "access.token.claim": "false",
+            "claim.name": "role",
+            "jsonType.label": "String"
+          }
+        }
+      ],
+      "rootUrl": "http://localhost:5173",
+      "adminUrl": "http://localhost:5173",
+      "baseUrl": "http://localhost:5173",
+      "redirectUris": [
+        "http://localhost:5173/*",
+        "http://localhost:5173"
+      ],
+      "webOrigins": [
+        "http://localhost:5173/*",
+        "http://localhost:5173"
+      ],
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:5173/*##http://localhost:5173"
       }
     }
   ],

@@ -1,0 +1,14 @@
+{
+  "realm": "mvp",
+  "auth-server-url": "http://localhost:8080/",
+  "ssl-required": "external",
+  "resource": "bx-be",
+  "verify-token-audience": true,
+  "credentials": {
+    "secret": "secretkey123"
+  },
+  "confidential-port": 0,
+  "policy-enforcer": {
+    "credentials": {}
+  }
+}
